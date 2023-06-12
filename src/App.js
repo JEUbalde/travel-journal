@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import data from './Data';
+import Entry from './components/Entry';
+import Navbar from './components/Navbar';
 
 function App() {
+
+  const journalEntries = data.map(entry => {
+    return(
+      <Entry
+        title={entry.title}
+        location={entry.location}
+        googleMapsUrl={entry.googleMapsUrl}
+        startDate={entry.startDate}
+        endDate={entry.endDate}
+        description={entry.description}
+        imageUrl={entry.imageUrl}
+      />
+    )
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar/>
+      {journalEntries}
     </div>
   );
 }
